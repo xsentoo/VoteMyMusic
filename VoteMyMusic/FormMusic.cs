@@ -42,6 +42,7 @@ namespace VoteMyMusic
 
                 // Requête SQL pour récupérer les titres et les noms d'utilisateurs
                 string query = "SELECT Title, Username FROM Musics";
+
                 MySqlCommand command = new MySqlCommand(query, connection);
 
                 // Exécution de la requête
@@ -271,6 +272,17 @@ namespace VoteMyMusic
 
             // Cacher le formulaire actuel (si vous voulez le faire disparaître)
             this.Hide();
+        }
+
+        private void buttonOut_Click(object sender, EventArgs e)
+        {
+            FormLogin loginForm = new FormLogin();
+
+            // Afficher le formulaire de connexion
+            loginForm.Show();
+
+            // Fermer le formulaire actuel (FormMusic)
+            this.Close();
         }
     }
 }

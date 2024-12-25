@@ -35,11 +35,14 @@
             panel3 = new Panel();
             button2 = new Button();
             panel5 = new Panel();
+            panel6 = new Panel();
+            buttonOut = new Button();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -57,10 +60,10 @@
             label1.AutoSize = true;
             label1.Location = new Point(404, 25);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(95, 21);
             label1.TabIndex = 0;
             label1.Text = "Bienvenue";
-            label1.Click += label1_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            label1.Click += label1_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -68,6 +71,7 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel3);
+            flowLayoutPanel1.Controls.Add(panel6);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 62);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -97,7 +101,7 @@
             button1.TabIndex = 0;
             button1.Text = "Profile";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            button1.Click += button1_Click;
             // 
             // panel4
             // 
@@ -121,7 +125,7 @@
             button3.TabIndex = 0;
             button3.Text = "Music save";
             button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            button3.Click += button3_Click;
             // 
             // panel3
             // 
@@ -145,7 +149,7 @@
             button2.TabIndex = 0;
             button2.Text = "Add Music";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click_1; // Assurez-vous que l'événement est bien associé à la méthode
+            button2.Click += button2_Click_1;
             // 
             // panel5
             // 
@@ -156,9 +160,33 @@
             panel5.TabIndex = 2;
             panel5.Paint += panel5_Paint;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(buttonOut);
+            panel6.Location = new Point(3, 159);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(182, 46);
+            panel6.TabIndex = 6;
+            // 
+            // buttonOut
+            // 
+            buttonOut.BackColor = SystemColors.ActiveCaptionText;
+            buttonOut.FlatStyle = FlatStyle.Popup;
+            buttonOut.Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonOut.ForeColor = SystemColors.ButtonFace;
+            buttonOut.Image = (Image)resources.GetObject("buttonOut.Image");
+            buttonOut.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonOut.Location = new Point(0, 0);
+            buttonOut.Name = "buttonOut";
+            buttonOut.Size = new Size(182, 46);
+            buttonOut.TabIndex = 0;
+            buttonOut.Text = "Deconnexion";
+            buttonOut.UseVisualStyleBackColor = false;
+            buttonOut.Click += buttonOut_Click;
+            // 
             // FormMusic
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(954, 509);
             Controls.Add(panel5);
@@ -178,6 +206,7 @@
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -193,5 +222,7 @@
         private Panel panel3;
         private Button button2;
         private Panel panel5;
+        private Panel panel6;
+        private Button buttonOut;
     }
 }
