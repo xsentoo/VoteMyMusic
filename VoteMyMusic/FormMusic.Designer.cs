@@ -22,25 +22,176 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMusic));
+            panel1 = new Panel();
+            label1 = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel2 = new Panel();
+            button1 = new Button();
+            panel4 = new Panel();
+            button3 = new Button();
+            panel3 = new Panel();
+            button2 = new Button();
+            panel5 = new Panel();
+            panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(954, 62);
+            panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(404, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Bienvenue";
+            label1.Click += label1_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = SystemColors.ActiveCaptionText;
+            flowLayoutPanel1.Controls.Add(panel2);
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel3);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 62);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(208, 447);
+            flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(button1);
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(182, 46);
+            panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.Dock = DockStyle.Fill;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(182, 46);
+            button1.TabIndex = 0;
+            button1.Text = "Profile";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(button3);
+            panel4.Location = new Point(3, 55);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(182, 46);
+            panel4.TabIndex = 4;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = SystemColors.ButtonFace;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(0, 0);
+            button3.Name = "button3";
+            button3.Size = new Size(182, 46);
+            button3.TabIndex = 0;
+            button3.Text = "Music save";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click; // Assurez-vous que l'événement est bien associé à la méthode
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(button2);
+            panel3.Location = new Point(3, 107);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(182, 46);
+            panel3.TabIndex = 5;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ActiveCaptionText;
+            button2.FlatStyle = FlatStyle.Popup;
+            button2.Font = new Font("Arial Narrow", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.ButtonFace;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(182, 46);
+            button2.TabIndex = 0;
+            button2.Text = "Add Music";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1; // Assurez-vous que l'événement est bien associé à la méthode
+            // 
+            // panel5
+            // 
+            panel5.BackColor = SystemColors.ButtonHighlight;
+            panel5.Location = new Point(246, 95);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(662, 375);
+            panel5.TabIndex = 2;
+            panel5.Paint += panel5_Paint;
             // 
             // FormMusic
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(954, 509);
+            Controls.Add(panel5);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(panel1);
+            Font = new Font("Arial", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "FormMusic";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMusic";
             Load += FormMusic_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
+        private Label label1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel2;
+        private Button button1;
+        private Panel panel4;
+        private Button button3;
+        private Panel panel3;
+        private Button button2;
+        private Panel panel5;
     }
 }

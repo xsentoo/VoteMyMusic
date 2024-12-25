@@ -165,7 +165,8 @@
             labelLogin.Size = new Size(79, 40);
             labelLogin.TabIndex = 0;
             labelLogin.Text = "Login";
-            labelLogin.Click += label1_Click;
+            labelLogin.Click += labelLogin_Click; // Correction ici : gestionnaire d'événement pour le clic
+
             // 
             // panel2
             // 

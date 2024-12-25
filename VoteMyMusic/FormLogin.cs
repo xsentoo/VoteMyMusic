@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace VoteMyMusic
@@ -20,11 +13,6 @@ namespace VoteMyMusic
         public FormLogin()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // Gestionnaire d'événement laissé vide (aucune action nécessaire pour le moment)
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -63,8 +51,9 @@ namespace VoteMyMusic
                 {
                     MessageBox.Show("Login successful! Welcome to Vote My Music.", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Ouvrir FormMusic après connexion réussie
-                    FormMusic formMusic = new FormMusic(); // Passer le nom d'utilisateur ou toute autre info nécessaire
+                    // Passer la chaîne de connexion et l'utilisateur à FormMusic
+                    // Ajout du constructeur qui accepte 2 paramètres : username et connString
+                    FormMusic formMusic = new FormMusic(username, connString);
                     formMusic.Show();
                     this.Hide(); // Cacher le formulaire de login
                 }
@@ -103,6 +92,12 @@ namespace VoteMyMusic
         private void FormLogin_Load(object sender, EventArgs e)
         {
             // Code à exécuter au chargement du formulaire (si nécessaire)
+        }
+
+        // Méthode qui gère l'événement Click sur labelLogin
+        private void labelLogin_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
