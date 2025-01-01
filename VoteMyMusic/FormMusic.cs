@@ -41,7 +41,7 @@ namespace VoteMyMusic
                 connection.Open();
 
                 // Requête SQL pour récupérer les titres et les noms d'utilisateurs
-                string query = "SELECT Title, Username FROM Musics";
+                string query = "SELECT Title, Username, Link FROM Musics"; // Ajout de la colonne Link pour chaque musique
 
                 MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -55,6 +55,7 @@ namespace VoteMyMusic
                     {
                         string title = reader.GetString("Title");
                         string username = reader.GetString("Username");
+                        string link = reader.IsDBNull(reader.GetOrdinal("Link")) ? "" : reader.GetString("Link");
 
                         // Créer un bouton de vote pour chaque titre
                         Button voteButton = new Button
@@ -106,12 +107,24 @@ namespace VoteMyMusic
 
                 foreach (var (title, username, voteButton) in _musicData)
                 {
-                    // Dessiner chaque titre et le nom de l'utilisateur dans panel5
-                    string displayText = $"{title} (Ajouté par: {username})";
+                    // Récupérer le nombre de votes pour chaque titre
+                    int voteCount = GetVoteCount(title);
+
+                    // Récupérer le lien associé au titre depuis la base de données
+                    string link = GetMusicLink(title);
+
+                    // Dessiner chaque titre, le nom de l'utilisateur, le nombre de votes et le lien dans panel5
+                    string displayText = $"{title} (Ajouté par: {username}) - {voteCount} votes";
                     e.Graphics.DrawString(displayText, new Font("Arial", 10), Brushes.Black, new PointF(10, yPosition));
 
+                    // Afficher le lien sous forme de texte cliquable
+                    if (!string.IsNullOrEmpty(link))
+                    {
+                        e.Graphics.DrawString("Lien: " + link, new Font("Arial", 10, FontStyle.Underline), Brushes.Blue, new PointF(10, yPosition + 20));
+                    }
+
                     // Placer les boutons de vote à côté du titre
-                    voteButton.Location = new Point(220, yPosition); // Ajustez la position du bouton
+                    voteButton.Location = new Point(300, yPosition); // Ajustez la position du bouton
                     panel5.Controls.Add(voteButton); // Ajouter le bouton au panel
 
                     yPosition += 40; // Décaler la position verticale pour chaque titre et son bouton
@@ -120,6 +133,83 @@ namespace VoteMyMusic
             else
             {
                 e.Graphics.DrawString("Aucun titre disponible.", new Font("Arial", 10), Brushes.Red, new PointF(10, 10));
+            }
+        }
+
+        // Méthode pour obtenir le nombre de votes pour un titre donné
+        private int GetVoteCount(string title)
+        {
+            MySqlConnection connection = null;
+            try
+            {
+                // Connexion à la base de données
+                connection = new MySqlConnection(_connectionString);
+                connection.Open();
+
+                // Requête SQL pour récupérer le nombre de votes pour le titre
+                string query = "SELECT COUNT(*) FROM Votes WHERE Title = @Title";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Title", title);
+
+                // Retourner le nombre de votes
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+            finally
+            {
+                // Fermeture de la connexion
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        // Méthode pour obtenir le lien associé à un titre donné depuis la base de données
+        private string GetMusicLink(string title)
+        {
+            MySqlConnection connection = null;
+            try
+            {
+                // Connexion à la base de données
+                connection = new MySqlConnection(_connectionString);
+                connection.Open();
+
+                // Requête SQL pour récupérer le lien associé à ce titre
+                string query = "SELECT Link FROM Musics WHERE Title = @Title";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Title", title);
+
+                // Retourner le lien trouvé, ou une chaîne vide si aucun lien n'est associé
+                object result = command.ExecuteScalar();
+                return result != DBNull.Value ? result.ToString() : string.Empty;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+            finally
+            {
+                // Fermeture de la connexion
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -257,8 +347,13 @@ namespace VoteMyMusic
         // Action au clic sur le bouton Music save
         private void button3_Click(object sender, EventArgs e)
         {
-            // Code pour gérer le clic sur le bouton "Music save"
-            MessageBox.Show("Music save button clicked!");
+            FormSavedMusic formSavedMusic = new FormSavedMusic(_username, _connectionString);
+
+            // Affichez FormSavedMusic
+            formSavedMusic.Show();
+
+            // (Optionnel) Cachez le formulaire actuel si vous voulez qu'il ne soit plus visible
+            this.Hide();
         }
 
         // Action au clic sur le bouton Add Music

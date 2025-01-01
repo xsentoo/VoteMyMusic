@@ -34,9 +34,9 @@
             button3 = new Button();
             panel3 = new Panel();
             button2 = new Button();
-            panel5 = new Panel();
             panel6 = new Panel();
             buttonOut = new Button();
+            panel5 = new Panel();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -151,15 +151,6 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
             // 
-            // panel5
-            // 
-            panel5.BackColor = SystemColors.ButtonHighlight;
-            panel5.Location = new Point(246, 95);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(662, 375);
-            panel5.TabIndex = 2;
-            panel5.Paint += panel5_Paint;
-            // 
             // panel6
             // 
             panel6.Controls.Add(buttonOut);
@@ -183,6 +174,16 @@
             buttonOut.Text = "Deconnexion";
             buttonOut.UseVisualStyleBackColor = false;
             buttonOut.Click += buttonOut_Click;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panel5.BackColor = SystemColors.ButtonHighlight;
+            panel5.Location = new Point(246, 95);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(662, 375);
+            panel5.TabIndex = 2;
+            panel5.Paint += panel5_Paint;
             // 
             // FormMusic
             // 

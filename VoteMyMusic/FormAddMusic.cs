@@ -93,5 +93,16 @@ namespace VoteMyMusic
         {
             // Code à exécuter lors du chargement du formulaire
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMusic musicForm = new FormMusic(_username, _connectionString);
+
+            // Affichez la nouvelle page
+            musicForm.Show();
+
+            // Fermez ou masquez la page actuelle si nécessaire
+            this.Hide(); 
+        }
     }
 }

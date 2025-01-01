@@ -34,6 +34,7 @@
             labelMusicTitle = new Label();
             label2 = new Label();
             buttonAdd = new Button();
+            buttonBack = new Button();
             SuspendLayout();
             // 
             // labelAddMusic
@@ -90,11 +91,22 @@
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
+            // buttonBack
+            // 
+            buttonBack.Location = new Point(525, 307);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(94, 29);
+            buttonBack.TabIndex = 7;
+            buttonBack.Text = "Back";
+            buttonBack.UseVisualStyleBackColor = true;
+            buttonBack.Click += buttonBack_Click;
+            // 
             // FormAddMusic
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1315, 780);
+            Controls.Add(buttonBack);
             Controls.Add(buttonAdd);
             Controls.Add(label2);
             Controls.Add(labelMusicTitle);
@@ -116,5 +128,6 @@
         private Label labelMusicTitle;
         private Label label2;
         private Button buttonAdd;
+        private Button buttonBack;
     }
 }
