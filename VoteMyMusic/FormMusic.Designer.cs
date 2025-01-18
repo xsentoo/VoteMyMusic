@@ -178,6 +178,7 @@
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panel5.AutoScroll = true;
             panel5.BackColor = SystemColors.ButtonHighlight;
             panel5.Location = new Point(246, 95);
             panel5.Name = "panel5";

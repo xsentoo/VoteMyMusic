@@ -145,6 +145,7 @@
             textBoxUsername.Name = "textBoxUsername";
             textBoxUsername.Size = new Size(327, 27);
             textBoxUsername.TabIndex = 2;
+            textBoxUsername.TextChanged += textBoxUsername_TextChanged;
             // 
             // LabelUsername
             // 
@@ -165,8 +166,7 @@
             labelLogin.Size = new Size(79, 40);
             labelLogin.TabIndex = 0;
             labelLogin.Text = "Login";
-            labelLogin.Click += labelLogin_Click; // Correction ici : gestionnaire d'événement pour le clic
-
+            labelLogin.Click += labelLogin_Click;
             // 
             // panel2
             // 

@@ -6,7 +6,7 @@ namespace VoteMyMusic
 {
     public partial class Register : Form
     {
-        String connString = "server=localhost; port=3306;database=votemymusic;user=root;password=";
+        String connString = "server=localhost; port=3308;database=votemymusic;user=root;password=";
 
         public Register()
         {
